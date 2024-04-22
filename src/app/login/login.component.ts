@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { User } from '../types/auth-types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   loginUser() {
     const user: User = {
@@ -25,6 +26,7 @@ export class LoginComponent {
           if (data.token) {
             sessionStorage.setItem('auth_token', data.token);
             console.info('Token stored in session storage.');
+            this.router.navigate(['/products']);
           } else {
             console.error('No token received in response.');
           }
