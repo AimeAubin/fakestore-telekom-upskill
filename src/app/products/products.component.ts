@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { Product } from '../types/products-type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -8,15 +9,27 @@ import { Product } from '../types/products-type';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private router: Router
+  ) {}
 
   products: Product[] = [];
 
   ngOnInit() {
     this.productsService
       .getProducts('https://fakestoreapi.com/products')
-      .subscribe((products: Product[]) => {
-        this.products = products;
+      .subscribe({
+        next: (data) => {
+          this.products = data;
+        },
+        error: (error) => {
+          console.log(error);
+        },
       });
+  }
+
+  onProductClick(productId: number) {
+    this.router.navigate(['products', productId]);
   }
 }

@@ -1,48 +1,38 @@
-<div class="container mx-auto px-4">
-  <div class="flex justify-end mt-4">
-    <a href="/cart" class="text-xl">
-      <i class="fas fa-shopping-cart"></i>
-    </a>
-  </div>
-  <h1 class="text-3xl py-4 border-b mb-10">Find Online Products Easily</h1>
+<div class="container mx-auto px-4 h-full">
+  <h1
+    class="mb-2 text-center text-3xl uppercase font-extrabold text-gray-900 tracking-widest"
+  >
+    Fake Store
+  </h1>
+  <h2 class="text-center text-sm font-semibold text-gray-600 mb-10">
+    Find Online Products Easily
+  </h2>
+  <label for="search" class="sr-only">Username</label>
   <input
     type="text"
+    id="search"
+    name="search"
     placeholder="Search..."
-    class="border rounded w-full py-2 px-3 mb-4 shadow-inner focus:outline-none focus:shadow-outline"
+    class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
   />
-  <h2 class="text-xl mb-4">Recommendations for you</h2>
+  <h3 class="text-xl my-4 text-gray-800 font-medium">
+    Recommendations for you
+  </h3>
   <div class="grid grid-cols-4 gap-4">
     <div
       *ngFor="let product of products"
-      class="bg-white rounded overflow-hidden shadow-lg"
+      class="bg-white rounded overflow-hidden shadow-lg cursor-pointer"
+      (click)="onProductClick(product.id)"
     >
-      <img class="w-full" [src]="product.image" alt="Product image" />
+      <img class="w-full h-[200px]" [src]="product.image" alt="Product image" />
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{{ product.title }}</div>
+        <div class="font-bold text-xl truncate mb-2">{{ product.title }}</div>
+        <p class="line-clamp-3 text-gray-900">{{ product.description }}</p>
       </div>
       <div class="px-6 pt-4 pb-2">
-        <span
-          class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-        >
-          {{ product.rating.rate }} stars
+        <span class="inline-block text-lg font-bold text-gray-900 mr-2 mb-2">
+          {{ product.price | currency : "USD" }}
         </span>
-        <span
-          class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-        >
-          ${{ product.price }}
-        </span>
-      </div>
-      <div class="px-6 pt-4 pb-2 flex justify-between">
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          View Details
-        </button>
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Add to Cart
-        </button>
       </div>
     </div>
   </div>
