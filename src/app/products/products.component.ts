@@ -15,6 +15,7 @@ export class ProductsComponent {
   ) {}
 
   products: Product[] = [];
+  searchTerm: string = '';
 
   ngOnInit() {
     this.productsService

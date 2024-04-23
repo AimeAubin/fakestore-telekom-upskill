@@ -8,9 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ProductsComponent, ProductComponent],
+  declarations: [AppComponent, LoginComponent, ProductsComponent, ProductComponent, FilterPipe],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
