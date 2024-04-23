@@ -10,6 +10,7 @@
   <label for="search" class="sr-only">Username</label>
   <input
     type="text"
+    [(ngModel)]="searchTerm"
     id="search"
     name="search"
     placeholder="Search..."
@@ -20,7 +21,7 @@
   </h3>
   <div class="grid grid-cols-4 gap-4">
     <div
-      *ngFor="let product of products"
+      *ngFor="let product of products | filter : searchTerm"
       class="bg-white rounded overflow-hidden shadow-lg cursor-pointer"
       (click)="onProductClick(product.id)"
     >
