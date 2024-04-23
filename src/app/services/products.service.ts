@@ -14,4 +14,10 @@ export class ProductsService {
       responseType: 'json',
     });
   };
+
+  getSingleProduct = (url: string): Observable<Product> => {
+    return this.apiService.get(url, {
+      responseType: 'json',
+    });
+  };
 }
