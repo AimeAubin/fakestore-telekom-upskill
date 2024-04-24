@@ -19,6 +19,7 @@ export class LoginComponent {
       username: this.username,
       password: this.password,
     };
+    
     this.authService
       .login('https://fakestoreapi.com/auth/login', user)
       .subscribe({
