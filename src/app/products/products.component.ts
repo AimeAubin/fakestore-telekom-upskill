@@ -33,4 +33,9 @@ export class ProductsComponent {
   onProductClick(productId: number) {
     this.router.navigate(['products', productId]);
   }
+
+  onLogout() {
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }
